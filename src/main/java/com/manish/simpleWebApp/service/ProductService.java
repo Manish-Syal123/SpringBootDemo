@@ -32,13 +32,26 @@ public class ProductService {
         products.add(prod);
     }
 
+    //to Update the product by it's id
     public void updateProduct(Product prod) {
+        int idx=getProductId(prod.getProdId());
+        products.set(idx,prod);
+    }
+
+    //to delete a product by it's id
+    public void deleteProduct(int prodId) {
+        int idx=getProductId(prodId);
+        products.remove(idx);
+    }
+    
+    private int getProductId(int prodId){
         int idx=0;
         for(int i=0;i<products.size();i++){
-            if(products.get(i).getProdId()== prod.getProdId()){
+            if(products.get(i).getProdId()== prodId){
                 idx=i; break;
             }
         }
-        products.set(idx,prod);
+        return idx;
     }
+
 }

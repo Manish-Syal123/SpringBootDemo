@@ -44,4 +44,14 @@ public class ProductController {
         }
     }
 
+    @DeleteMapping("/products/{prodId}")
+    public String deleteProduct(@PathVariable int prodId){
+        try {
+            service.deleteProduct(prodId);
+            return "Succefully Deleted the Product with ID : "+prodId;
+        } catch (Exception e) {
+            return e.toString();
+        }
+    }
+
 }
